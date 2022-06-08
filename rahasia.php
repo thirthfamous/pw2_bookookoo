@@ -7,24 +7,32 @@
     <title>Rahasia</title>
 </head>
 <body>
-    <?php 
-    include 'utils/connection.php';
+    <?php
+    include_once 'utils/rahasia.php'; 
     session_start();
 
     if (isset($_SESSION["user"])) {
-
-
-        // get data dari database berdasarkan form yang di input
-        $query = "SELECT * FROM rahasia";
-        $result = mysqli_query($connection, $query);
-
-        $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        foreach ($rows as $row ) {
-            echo "Nama Rahasia : ".$row['nama']."<br>";
-            echo "Deskripsi : ".$row['deskripsi']."<br>";
-        }
+        showRahasia();
     }
     
     ?>
+    <br>
+    ============================================================================== <br>
+    <h3>Tambah Rahasia</h3>
+    <form action="" method="post">
+        Nama Rahasia : <input type="text" name="nama" id="nama"> <br>
+        Deskripsi : <input type="text" name="deskripsi" id="nama"> <br>
+        <button type="submit">Tambah</button>
+    </form>
+
+    <?php
+        if (isset($_POST["nama"]) && $_POST["deskripsi"]) {
+            create($_POST["nama"], $_POST["deskripsi"]);
+        }
+    ?>
+
+    <br>
+    ============================================================================== <br>
+    <a href="logout.php">Logout</a>
 </body>
 </html>
