@@ -8,7 +8,7 @@ function showRahasia()
     $result = mysqli_query($GLOBALS['connection'], $query);
 
     $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    echo '<table border="1">';
+    echo '<table border="1" cellpadding="10" cellspacing="0" class="table-center">';
     echo    "<tr>";
     echo        "<th>ID</th>";
     echo        "<th>Nama</th>";
@@ -20,7 +20,12 @@ function showRahasia()
         echo "<td> ".$row['id']." </td>";
         echo "<td> ".$row['nama']." </td>";
         echo "<td> ".$row['deskripsi']." </td>";
-        echo "<td> <a href='delete.php?id=".$row['id']."'>Delete</a></td>";
+        $id = $row['id'];
+        $nama = $row['nama'];
+        $deskripsi = $row['deskripsi'];
+        echo "<td> <a href='delete.php?id=".$row['id']."'>Delete</a> 
+        <a href='edit.php?id=$id&nama=$nama&deskripsi=$deskripsi'>Edit</a> 
+        </td>";
         echo "</tr>";
     }
     echo `</table>`;
@@ -43,6 +48,16 @@ function delete($id)
 
     if (mysqli_query($GLOBALS['connection'], $queryDeleteRahasia)) {
         header("Location: http://localhost/login_management/rahasia.php");
+    } else {
+        echo mysqli_error($GLOBALS['connection']);
+    }
+}
+
+function edit($nama, $deskripsi, $id){
+    $queryEditRahasia = "UPDATE rahasia SET nama = '".$nama."', deskripsi = '".$deskripsi."' WHERE id = ".$id;
+
+    if (mysqli_query($GLOBALS['connection'], $queryEditRahasia)) {
+        header("Location: rahasia.php");
     } else {
         echo mysqli_error($GLOBALS['connection']);
     }

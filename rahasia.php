@@ -1,3 +1,18 @@
+<?php 
+include_once 'utils/init.php'; 
+
+if( !isset($_SESSION['user']) ){
+    header("Location: login.php");
+}
+// mengambil data rahasia
+showRahasia();
+
+// menambah data rahasia
+if( isset($_POST['tambah']) ){
+    create($_POST["nama"], $_POST["deskripsi"]);
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,32 +22,37 @@
     <title>Rahasia</title>
 </head>
 <body>
-    <?php
-    include_once 'utils/rahasia.php'; 
-    session_start();
 
-    if (isset($_SESSION["user"])) {
-        showRahasia();
-    }
-    
-    ?>
-    <br>
-    ============================================================================== <br>
-    <h3>Tambah Rahasia</h3>
-    <form action="" method="post">
-        Nama Rahasia : <input type="text" name="nama" id="nama"> <br>
-        Deskripsi : <input type="text" name="deskripsi" id="nama"> <br>
-        <button type="submit">Tambah</button>
-    </form>
+   <div class="container">
+        <div class="menu">
+            <a class="btn btn-danger" href="logout.php">Logout</a>
+        </div>
 
-    <?php
-        if (isset($_POST["nama"]) && $_POST["deskripsi"]) {
-            create($_POST["nama"], $_POST["deskripsi"]);
-        }
-    ?>
+        <div class="content tambah">
+            <!-- judul -->
+            <div class="title">
+                <h3>Tambah Rahasia</h3>
+            </div>
 
-    <br>
-    ============================================================================== <br>
-    <a href="logout.php">Logout</a>
+            
+            <form action="" method="post">
+                <div class="input-group">
+                    <label for="nama">Nama</label>
+                    <input type="text" name="nama" id="nama">
+                </div>
+                <div class="input-group">
+                    <label for="deskripsi">Deskripsi</label>
+                    <input type="text" name="deskripsi" id="deskripsi">
+                </div>
+                <button type="submit" name="tambah" class="btn">Tambah</button>
+            </form>
+
+
+        </div>
+   </div>
+
+    <!-- show Rahasisa data -->
+    <!-- karena php dieksekusi terakhir jadi tampil data dibawah -->
+
 </body>
 </html>

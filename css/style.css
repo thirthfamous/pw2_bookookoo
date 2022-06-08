@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    transition: 0.4s;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* login */
+.login {
+    width: 60vw;
+    margin: auto;
+    height: 100vh;
+}
+.form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.form h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.input-group input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    outline: none;
+}
+.btn {
+    color: white;
+    opacity: 0.8;
+    padding: 9px 42px;
+    border-radius: 4px;
+    border: none;
+    background-color: rgb(87, 87, 240);
+    cursor: pointer;
+}
+.btn:hover {
+    opacity: 1;
+}
+
+/* tambah rahasisa */
+.container {
+    width: 60vw;
+    margin: auto;
+
+}
+.tambah {
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);    
+}
+.table-center {
+    width: 60vw;
+    margin: auto;
+    margin-top: 32px;
+}
+.table-center th, .table-center td {
+    text-align: left;
+    padding: 13px;
+}
+.menu {
+    margin: 32px 0;
+}
+a {
+    text-decoration: none;
+}
+.btn-danger {
+    background-color: rgb(255, 63, 63) !important;
+    color: white !important;
+}

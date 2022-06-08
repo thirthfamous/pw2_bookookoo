@@ -1,6 +1,6 @@
 <?php
 
-include_once 'utils/rahasia.php'; 
+include_once 'utils/init.php'; 
 
 if (isset($_GET['id'])) {
     // delete by ID
